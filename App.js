@@ -7,6 +7,7 @@ import SignUp from './Screens/SignUp';
 import MyBooks from './Screens/MyBooks';
 import UploadBook from './Screens/UploadBook';
 import EditBook from './Screens/EditBook';
+import Store from './Screens/Store';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -16,11 +17,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName={'SignUp'}>
-        <Drawer.Screen name={'SignUp'} component={SignUp}/>
-        <Drawer.Screen name={'Login'} component={Login}/>
-        <Drawer.Screen name={'UploadBook'} component={UploadBook}/>
+        <Drawer.Screen name={'SignUp'} component={SignUp} options={{gestureEnabled:false}}/>
+        <Drawer.Screen name={'Login'} component={Login} options={{gestureEnabled:false}}/>
+        <Drawer.Screen name={'UploadBook'} component={UploadBook} options={{gestureEnabled:false}}/>
         <Drawer.Screen name={'MyBooks'} component={MyBooks}/>
-        <Drawer.Screen name={'EditBook'} component={EditBook}/>
+        <Drawer.Screen name={'EditBook'} component={EditBook} options={{gestureEnabled:false}}/>
       </Drawer.Navigator>
     </NavigationContainer>
   );

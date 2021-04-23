@@ -76,9 +76,9 @@ export default function MyBooks({navigation, route}) {
         <TouchableOpacity
           onPress={()=>ChangeSeeTitle(item.title)}
           style={{flex:0, flexDirection:'row', height:'auto'}}>
-          <Image 
+          {item.coverImageData!==null?<Image 
             style={[styles.image, {aspectRatio:item.coverImageData.width/item.coverImageData.height}]}
-            source={{uri:'data:image/jpeg;base64,'+item.coverImageData.base64}}/>
+            source={{uri:'data:image/jpeg;base64,'+item.coverImageData.base64}}/>:null}
           <View style={{flexDirection:'column'}}>
             <Text>Title: {item.title}</Text>
             <Text>Genre: {item.genre}</Text>
@@ -107,6 +107,15 @@ export default function MyBooks({navigation, route}) {
     <SafeAreaView style={{flex:1}}>
       <ImageBackground source={require('../assets/book-library-with-open-textbook.jpg')} style={{flex:1}}>
         <View style={styles.tab}>
+          <Text 
+            style={{
+            fontSize: 24,
+            color: "#444",
+            fontWeight: "bold",
+            alignSelf: "center",
+            textTransform: "uppercase"
+            }}
+          >Store</Text>
           <Text style={{
             fontSize: 24,
             color: "#0dd",
@@ -137,11 +146,13 @@ export default function MyBooks({navigation, route}) {
 
 const styles = StyleSheet.create({
   tab:{
+    flexDirection:'row',
     marginTop:0,
-    paddingTop:30,
+    paddingTop:50,
     marginBottom:10,
     width:'100%',
-    backgroundColor:'#eee'
+    backgroundColor:'#eee',
+    justifyContent:'space-evenly'
   },
   formContainer: {
     alignSelf:'center',

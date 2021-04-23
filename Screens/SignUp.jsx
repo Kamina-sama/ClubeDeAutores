@@ -11,18 +11,29 @@ export default function SignUp({navigation}) {
   const [email, setEmail]=useState('');
   const [password, setPassword]=useState('');
 
-  async function handleSignUp(props) {
+  async function handleSignUp() {
+    console.log('in handleSignUp');
     let users=await AsyncStorage.getItem('users');
+    console.log('1');
     if(users===null) users=JSON.stringify([]);
+    console.log('2');
     users=JSON.parse(users);
+    console.log('3');
     let created_user={name, email, password, myBooks:[]};
+    console.log('4');
     users.push(created_user);
+    console.log('5');
     users=JSON.stringify(users);
+    console.log('6');
     await AsyncStorage.setItem('users', users);
+    console.log('7');
     created_user=JSON.stringify(created_user);
+    console.log('8');
     await AsyncStorage.setItem('loggedUser', created_user);
+    console.log('9');
     //a partir  daqui, seria usado a navegação, passariamos o logged user como parametro pra nova tela
     created_user=JSON.parse(created_user);
+    console.log('10');
     navigation.navigate('MyBooks', {loggedUser:created_user});
   }
 
